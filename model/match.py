@@ -6,6 +6,7 @@ le perdant on score de 0
 en cas de match nul chaqu'un a 1/2 point
 """
 import datetime
+NOMBRES_DE_TOURS = 4
 class Match():
     """un match est composé de deux listes la premi-re contient le nom des
      deux joueurs et le second leur scores respectifs à l'issue du match"""

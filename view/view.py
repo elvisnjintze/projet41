@@ -34,6 +34,9 @@ class View():
          de deux élts [score_du_joueur1,score_du_joueur2]"""
         s1 = input(f"entrez le score du joueur {joueur1} lors du match qui l'a opposé à  {joueur2}: ")
         s2 = input(f"entrez le score du joueur {joueur2} lors du match qui l'a opposé à  {joueur1}: ")
-        s = [float(s1),float(s2)]
-        return s
+        try:
+            s = [float(s1.replace(',','.')),float(s2.replace(',','.'))]
+            return s
+        except ValueError:
+            print("vous n'aves pas entrez des scores à valeur réel exemple 0.5")
 

@@ -83,6 +83,7 @@ class Controler():
             if not self.verify_match(m):
                 self.round1.append(m)
         self.list_of_match_play = self.list_of_match_play + self.round1
+        self.round_list.append(self.round1)
         print(len(self.list_of_match_play))
 
     def type_result(self):
@@ -126,6 +127,25 @@ class Controler():
         players_table.truncate()  # clear the table first
         players_table.insert_multiple(liste)
 
+    def serialisation_tounament(self):
+        #on extrait la liste des matchs
+        liste_des_matchs = []
+        for i in self.list_of_match_play:
+            name1 = i.player_list[0].family_name
+            name2 = i.player_list[1].family_name
+            m = (name1,name2)
+            liste_des_matchs.append(m)
+        serial = {'nom du tournois':self.tour.name,
+                  'lieu du tournois':self.tour.place,
+                  'date du tournois':str(self.tour.date),
+                  'nombre de rounds du tournois':self.tour.number_of_round,
+                  'description du tournois':self.tour.description,
+                  'liste des matchs joués pendant le tournois':liste_des_matchs }
+        db = TinyDB('db.json')
+        tournois_table = db.table('tournament')
+        tournois_table.truncate()  # clear the table first
+        tournois_table.insert(serial)
+
     def run(self):
         """méthode permettant d'exècuter le programme
         premierement on crée un tournoi"""
@@ -141,7 +161,8 @@ class Controler():
         #une fois terminer, on passe à la sérialisation
         self.sort_player_by_point()
         self.serialisation_player()
-
+        self.tour.list_of_round = self.round_list
+        self.serialisation_tounament()
 
 v = view.View()
 c = Controler(v)

@@ -29,7 +29,7 @@ class Tournament():
     """un tournoi est defini par un nom, le lieu où se déroule le tournoi, le nombre de round par défaut égal
     à 4 de la liste des rounds, de listes des joueurs, d'un control de temps et une description du
     directeur du tounoir"""
-    def __init__(self,name,place,description,number_of_round=4,list_of_round=[],
+    def __init__(self,name,place,description,number_of_round=NOMBRES_DE_TOURS,list_of_round=[],
                  list_of_player=[]):
         self.name = name
         self.place = place
@@ -38,5 +38,3 @@ class Tournament():
         self.list_of_round = list_of_round
         self.list_of_player = list_of_player
         self.description = description
-
-

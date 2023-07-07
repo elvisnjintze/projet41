@@ -117,7 +117,7 @@ class Controler():
                       'second name': i.second_name,
                      'birthday': i.birthday,
                       'sex': i.sex,
-                      'clasement': i.classement,
+                      'classement': i.classement,
                       'point': i.point}
             liste.append(serial)
         #on crée et insere la liste dans une DB et à la table player
@@ -139,6 +139,7 @@ class Controler():
             self.generate_next_round()
             self.type_result()
         #une fois terminer, on passe à la sérialisation
+        self.sort_player_by_point()
         self.serialisation_player()
 
 

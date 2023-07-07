@@ -9,5 +9,5 @@ class Joueur():
         self.second_name = second_name
         self.birthday = birthday
         self.sex = sex
-        self.clasement = classement
+        self.classement = classement
         self.point = 0

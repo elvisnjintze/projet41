@@ -7,8 +7,9 @@ from model import player
 from view import view
 from tinydb import TinyDB
 
+
 class Controler():
-    def __init__(self,view):
+    def __init__(self, view):
         self.player = []
         self.view = view
         self.round_list = []
@@ -18,8 +19,10 @@ class Controler():
 
     def create_tournament(self):
         """méthode permettant de créer un tournoi"""
-        name_tournament = self.view.ask_name_tournament()#le nom du tournoi
-        place_tournament = self.view.ask_place_tournament()#le lieu ou de déroule le tournoi
+        # le nom du tournoi
+        name_tournament = self.view.ask_name_tournament()
+        # le lieu ou de déroule le tournoi
+        place_tournament = self.view.ask_place_tournament()
         #self.number_of_round = number_of_round
         #self.list_of_round = list_of_round
         # self.time_control = time_control
@@ -146,6 +149,16 @@ class Controler():
         tournois_table.truncate()  # clear the table first
         tournois_table.insert(serial)
 
+
+    def show_state(self):
+        """ méthode pour afficher les différentes informations sur le tournoi"""
+        if self.view.ask_state()=="1":
+            db = TinyDB('db.json')
+            bd = db.all()
+            self.view.show_infos(bd)
+        self.view.show_infos("merci d'etre passé. ce fut une expérience remarquable. A une autre fois")
+
+
     def run(self):
         """méthode permettant d'exècuter le programme
         premierement on crée un tournoi"""
@@ -163,7 +176,5 @@ class Controler():
         self.serialisation_player()
         self.tour.list_of_round = self.round_list
         self.serialisation_tounament()
+        #self.show_state()
 
-v = view.View()
-c = Controler(v)
-c.run()

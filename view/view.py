@@ -28,6 +28,10 @@ class View():
     def show_infos(self,infos):
         print(infos)
 
+    def ask_state(self):
+        s = input("désirez vous afficher les informations liées au déroulement du tournoi, si oui tapez 1 ou tout autre sinon.")
+        return s
+
     def ask_result(self,joueur1,joueur2):
         """fction qui prend en paramètre les noms de deux joueurs: joueur1 et joueur2 et
          permet d'entrer les scores pour les deux joueurs après leur match et retourne une liste

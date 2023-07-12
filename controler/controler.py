@@ -146,6 +146,13 @@ class Controler():
         tournois_table.truncate()  # clear the table first
         tournois_table.insert(serial)
 
+    def show_state(self):
+        """afficher l'état et les infos sur le tournoi"""
+        s = self.view.ask_continue()
+        if s=="1":
+            self.view.show_infos_json("db.json")
+        self.view.show_infos("MERCI D'ETRE PASSÉ ET D'AVOIR PARTICIPÉ À NOTRE TOURNOI RENDEZ LA PROCHAINE FOIS")
+
     def run(self):
         """méthode permettant d'exècuter le programme
         premierement on crée un tournoi"""
@@ -163,7 +170,6 @@ class Controler():
         self.serialisation_player()
         self.tour.list_of_round = self.round_list
         self.serialisation_tounament()
+        self.show_state()
 
-v = view.View()
-c = Controler(v)
-c.run()
+

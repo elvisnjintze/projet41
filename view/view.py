@@ -1,4 +1,8 @@
 """fichier contenant la vue de tout ce qui sera affiché à l'utilisateur"""
+import json
+import pprint
+
+
 class View():
     """classe permettant la collecte de l'information sur les joueurs"""
     def ask_list_of_player_tournament(self):
@@ -27,6 +31,15 @@ class View():
 
     def show_infos(self,infos):
         print(infos)
+
+    def show_infos_json(self,file):
+        with open(file,"r") as json_file:
+            data = json.load(json_file)
+            pprint.pprint(data)
+
+    def ask_continue(self):
+        s = input("entrez le caractère 1 si vous souhaitez afficher les informations sur votre tournois et un autre caractère sinon: ")
+        return s
 
     def ask_result(self,joueur1,joueur2):
         """fction qui prend en paramètre les noms de deux joueurs: joueur1 et joueur2 et

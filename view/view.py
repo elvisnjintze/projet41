@@ -11,9 +11,13 @@ class View():
         for i in range(8):
             name = input(f"entrez le nom du joueur numeros {i+1}: ")
             second_name = input(f"entrez le prenom du joueur  {name}: ")
-            birthday = input(f"entrez la date de naissance du joueur  {name} {second_name}: ")
+            birthday = input(f"entrez la date de naissance du "
+                             f"joueur  {name} {second_name}: ")
             sex = input(f"entrez le sex du joueur  {name} {second_name}: ")
-            joueur = {"name":name,"second_name":second_name,"birthday":birthday,"sex":sex}
+            joueur = {"name": name,
+                      "second_name": second_name,
+                      "birthday": birthday,
+                      "sex": sex}
             liste_joueur.append(joueur)
         return liste_joueur
 
@@ -29,27 +33,33 @@ class View():
         """fction qui permet de demander la description du tournoi"""
         return input("quelle est la description du tournoi: ")
 
-    def show_infos(self,infos):
+    def show_infos(self, infos):
         print(infos)
 
-    def show_infos_json(self,file):
-        with open(file,"r") as json_file:
+    def show_infos_json(self, file):
+        with open(file, "r") as json_file:
             data = json.load(json_file)
             pprint.pprint(data)
 
     def ask_continue(self):
-        s = input("entrez le caractère 1 si vous souhaitez afficher les informations sur votre tournois et un autre caractère sinon: ")
+        s = input("entrez le caractère 1 si vous souhaitez afficher les "
+                  "informations sur votre tournois et un autre caractère "
+                  "sinon: ")
         return s
 
-    def ask_result(self,joueur1,joueur2):
-        """fction qui prend en paramètre les noms de deux joueurs: joueur1 et joueur2 et
-         permet d'entrer les scores pour les deux joueurs après leur match et retourne une liste
+    def ask_result(self, joueur1, joueur2):
+        """fction qui prend en paramètre les noms de deux
+        joueurs: joueur1 et joueur2 et
+         permet d'entrer les scores pour les deux joueurs
+         après leur match et retourne une liste
          de deux élts [score_du_joueur1,score_du_joueur2]"""
-        s1 = input(f"entrez le score du joueur {joueur1} lors du match qui l'a opposé à  {joueur2}: ")
-        s2 = input(f"entrez le score du joueur {joueur2} lors du match qui l'a opposé à  {joueur1}: ")
+        s1 = input(f"entrez le score du joueur {joueur1} lors"
+                   f" du match qui l'a opposé à  {joueur2}: ")
+        s2 = input(f"entrez le score du joueur {joueur2} lors "
+                   f"du match qui l'a opposé à  {joueur1}: ")
         try:
-            s = [float(s1.replace(',','.')),float(s2.replace(',','.'))]
+            s = [float(s1.replace(',', '.')), float(s2.replace(',', '.'))]
             return s
         except ValueError:
-            print("vous n'aves pas entrez des scores à valeur réel exemple 0.5")
-
+            print("vous n'aves pas entrez des scores à valeur "
+                  "réel exemple 0.5")

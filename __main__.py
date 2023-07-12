@@ -7,4 +7,3 @@ from controler.controler import Controler
 v = view.View()
 c = Controler(v)
 c.run()
-

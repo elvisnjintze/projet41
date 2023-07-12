@@ -1,11 +1,10 @@
 """
-ficher principal permettant de lancer l'application:
+fichier de lancement de l'application
 """
-
-from controler.controler import Controler
 from view import view
-
+from controler.controler import Controler
 
 v = view.View()
 c = Controler(v)
 c.run()
+
